@@ -8,9 +8,12 @@ import (
 	"time"
 )
 
-
+const (
+	DEFAULT_THREADS = 1
+	DEFAULT_MSGS = 10
+)
 func main() {
-	var threads, msgs int = 1, 10
+	var threads, msgs int = DEFAULT_THREADS, DEFAULT_MSGS
 	
 	flag.Parse()
 	args := flag.Args()
@@ -31,7 +34,7 @@ func main() {
 
 	alog := alog.New(threads)
 	defer alog.Close()
-	
+
 	for i := 0; i < threads; i++ {
 		for j := 0; j < msgs; j++ {
 			alog.Info(i, j)
